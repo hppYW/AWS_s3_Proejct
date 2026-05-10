@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Config files
+*.config.js
+eslint.config.js
+
+# JSON files
+*.json
+!package.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
