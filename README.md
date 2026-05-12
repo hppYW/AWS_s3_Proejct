@@ -44,9 +44,49 @@ React 기반 가계부 웹 애플리케이션으로, AWS S3 정적 호스팅과 
 
 1. 코드 체크아웃
 2. Node.js 환경 설정
-3. 의존성 설치 (`npm install`)
+3. 의존성 설치 (`npm ci`)
 4. 프로덕션 빌드 (`npm run build`)
 5. 빌드 결과물을 AWS S3 버킷에 업로드
+
+```yaml
+name: Deploy to AWS S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: aws s3 sync dist/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
+```
 
 ### GitHub Secrets 설정
 
