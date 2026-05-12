@@ -115,7 +115,7 @@ npm run build
 
 ## 배포 URL
 
-> `http://<버킷이름>.s3-website-us-east-1.amazonaws.com`
+> `http://mybucket-20263616.0512.s3-website-us-east-1.amazonaws.com`
 
 ## 프로젝트 구조
 
