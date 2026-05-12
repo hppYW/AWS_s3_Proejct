@@ -136,3 +136,6 @@ AWS_project/
 
 ## 시연 영상
 https://youtu.be/CD2BNU13c2o
+
+## Amplify 시연 영상
+https://youtu.be/NU_v4IXgs90
