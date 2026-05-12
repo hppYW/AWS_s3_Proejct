@@ -133,3 +133,6 @@ AWS_project/
 ├── package.json
 └── vite.config.js
 ```
+
+## 시연 영상
+https://youtu.be/CD2BNU13c2o
